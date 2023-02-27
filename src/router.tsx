@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomeLayout from "./components/layouts/HomeLayout";
+import GithubConfirm from "./routes/GithubConfirm";
 import Home from "./routes/Home";
 import NotFound from "./routes/NotFound";
 import RoomDetail from "./routes/RoomDetail";
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
       { path: "", element: <Home />, index: true },
       { path: "users", element: <Users /> },
       { path: "rooms/:roomPk", element: <RoomDetail /> },
+      {
+        path: "social",
+        children: [{ path: "github", element: <GithubConfirm /> }],
+      },
     ],
   },
 ]);
