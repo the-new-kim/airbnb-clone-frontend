@@ -47,3 +47,48 @@ export const githubLogin = (code: string) =>
       }
     )
     .then((response) => response.status);
+
+interface IUsernameLoginVariables {
+  username: string;
+  password: string;
+}
+
+export const usernameLogin = ({
+  username,
+  password,
+}: IUsernameLoginVariables) =>
+  instance
+    .post(
+      "users/login/",
+      { username, password },
+      {
+        headers: {
+          "X-CSRFToken": Cookie.get("csrftoken") || "",
+        },
+      }
+    )
+    .then((response) => response.data);
+
+interface IUsernameSigninVariables extends IUsernameLoginVariables {
+  name: string;
+  email: string;
+  currency: string;
+  gender: string;
+  language: string;
+}
+
+export const usernameSignin = (data: IUsernameSigninVariables) =>
+  instance
+    .post(
+      "users/",
+      { ...data },
+      {
+        headers: {
+          "X-CSRFToken": Cookie.get("csrftoken") || "",
+        },
+      }
+    )
+    .then((response) => {
+      console.log("RESPONSE::::", response);
+      return response;
+    });

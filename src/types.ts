@@ -63,3 +63,18 @@ export interface IUser {
   language: string;
   currency: string;
 }
+
+export enum ECurrencyChoices {
+  WON = "won",
+  USD = "usd",
+}
+
+export enum EGenderChoices {
+  MALE = "male",
+  FEMALE = "female",
+}
+
+export enum ELanguageChoices {
+  KO = "kr",
+  EN = "en",
+}
